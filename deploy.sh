@@ -43,7 +43,7 @@ fi
 TZKT_POSTGRES_RELEASE="tzkt-postgres"
 
 if ! helm list -q | grep -wq "${TZKT_POSTGRES_RELEASE}"; then
-  helm install --values values-postgres.yaml "${TZKT_POSTGRES_RELEASE}" bitnami/postgresql
+  helm install -n tzkt --values values-postgres.yaml "${TZKT_POSTGRES_RELEASE}" bitnami/postgresql
 else
-  helm upgrade --values values-postgres.yaml "${TZKT_POSTGRES_RELEASE}" bitnami/postgresql
+  helm upgrade -n tzkt --values values-postgres.yaml "${TZKT_POSTGRES_RELEASE}" bitnami/postgresql
 fi
